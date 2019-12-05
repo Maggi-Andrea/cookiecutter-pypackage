@@ -6,6 +6,8 @@ flake8==3.7.8
 tox==3.14.0
 coverage==4.5.4
 Sphinx==1.8.5
+{% if cookiecutter.docs_html_theme == 'Read The Docs' -%}
+sphinx-rtd-theme==0.4.3{% endif %}
 twine==1.14.0
 {% if cookiecutter.command_line_interface|lower == 'click' -%}
 Click==7.0{% endif %}

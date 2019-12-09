@@ -138,8 +138,8 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
 latex_documents = [
-    (master_doc,
-     '%s-%s.tex' % (project, release.replace('.', '-')),
+    ('index',
+     '%s-%s.tex' % (project.replace(' ', '_'), release.replace('.', '-')),
       'Project %s Documentation' % (project),
       author,
      'manual'),
@@ -151,7 +151,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, '{{ cookiecutter.project_slug }}',
+    ('index', '{{ cookiecutter.project_slug }}',
      '{{ cookiecutter.project_name }} Documentation',
      [author], 1)
 ]
@@ -163,7 +163,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, '{{ cookiecutter.project_slug }}',
+    ('index', '{{ cookiecutter.project_slug }}',
      '{{ cookiecutter.project_name }} Documentation',
      author,
      '{{ cookiecutter.project_slug }}',

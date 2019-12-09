@@ -1,11 +1,14 @@
-Welcome to {{ cookiecutter.project_name }}'s documentation!
-======================================
+.. include:: ../../README.rst
+   :end-before: _ref_readme_more
+
+.. |max_depth| replace:: 2
+
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: |max_depth|
+   :caption: Contents
 
-   readme
+   quickstart
    installation
    usage
    modules
@@ -18,3 +21,4 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+

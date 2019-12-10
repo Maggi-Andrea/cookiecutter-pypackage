@@ -1,0 +1,4 @@
+Sphinx==2.2.0
+{% if cookiecutter.docs_html_theme == 'Read The Docs' -%}
+sphinx-rtd-theme==0.4.3{% endif %}
+sphinx-autobuild==0.7.1

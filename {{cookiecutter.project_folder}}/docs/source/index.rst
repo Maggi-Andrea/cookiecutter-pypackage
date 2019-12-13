@@ -1,11 +1,8 @@
 .. include:: ../../README.rst
    :end-before: _ref_readme_more
 
-.. |max_depth| replace:: 2
-
-
 .. toctree::
-   :maxdepth: |max_depth|
+   :maxdepth: 2
    :caption: Contents
 
    quickstart

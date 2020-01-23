@@ -28,8 +28,8 @@ on_rtd = os.environ.get('READTHEDOCS') == 'True'
 
 import {{ cookiecutter.project_slug }}
 
-project = '{{ cookiecutter.project_name }}'
-copyright = "{% now 'local', '%Y' %}, {{ cookiecutter.full_name }}"
+project = {{ cookiecutter.project_slug }}.__project__
+copyright = {{ cookiecutter.project_slug }}.__copyright__
 author = {{ cookiecutter.project_slug }}.__author__
 
 # The version info for the project you're documenting, acts as replacement

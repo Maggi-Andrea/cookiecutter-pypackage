@@ -4,7 +4,35 @@
 
 from setuptools import setup, find_packages
 
-from docs.source import conf
+import re
+
+from pathlib import Path  # noqa
+
+# -*- Distribution Meta -*-
+
+re_meta = re.compile(r'__(\w+?)__\s*=\s*(.*)')
+re_doc = re.compile(r'^"""(.+?)"""')
+
+def add_default(m):
+    attr_name, attr_value = m.groups()
+    return ((attr_name, attr_value.strip("\"'")),)
+
+
+def add_doc(m):
+    return (('doc', m.groups()[0]),)
+
+pats = {re_meta: add_default, re_doc: add_doc}
+here = Path(__file__).parent.absolute()
+with open(here / {{ cookiecutter.project_slug }} / '__init__.py') as meta_fh:
+  meta = {}
+  for line in meta_fh:
+    if line.strip() == '# -eof meta-':
+      break
+    for pattern, handler in pats.items():
+      m = pattern.match(line.strip())
+      if m:
+        meta.update(handler(m))
+
 
 with open('README.rst') as readme_file:
   readme = readme_file.read()
@@ -27,11 +55,11 @@ test_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3',{%- end
 } %}
 
 setup(
-  name=conf.project,
+  name=meta['project'],
   description="{{ cookiecutter.project_short_description }}",
-  version=conf.release,
-  author=conf.author,
-  author_email='{{ cookiecutter.email }}',
+  version=meta['version'],
+  author=meta['author'],
+  author_email=meta['email'],
   url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_folder }}',
   python_requires='>=3.7',
   classifiers=[
